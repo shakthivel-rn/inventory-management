@@ -18,11 +18,12 @@ fastify.register(generateTokenPlugin, { JWT_SECRET });
 fastify.register(require("./routes/authenticationRoutes"));
 fastify.register(require("./routes/userRoutes"));
 fastify.register(require("./routes/categoryRoutes"));
+fastify.register(require("./routes/itemRoutes"));
 
 const startServer = async () => {
   try {
-    await fastify.listen({ port: 3000 });
-    console.log(`Server Started at Port 3000`);
+    await fastify.listen({ port: 3001 });
+    console.log(`Server Started at Port 3001`);
   } catch (error) {
     console.log(error);
     process.exit(1);

@@ -11,7 +11,8 @@ module.exports = fp(async (fastify, options = {}) => {
     if (!user) throw new Error("User data is required to generate token");
 
     const userData = {
-      id: user._id,
+      _id: user._id,
+      name: user.name,
       email: user.email,
     };
 

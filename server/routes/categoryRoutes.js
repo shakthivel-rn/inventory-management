@@ -22,7 +22,7 @@ async function categoryRoutes(fastify, options) {
     { preHandler: [fastify.authenticate] },
     async (request, response) => {
       const { name, description } = request.body;
-      const { email } = request.user;
+      const { _id: userId, name: userName, email: userEmail } = request.user;
 
       if (!name || !description)
         return response
@@ -31,7 +31,7 @@ async function categoryRoutes(fastify, options) {
 
       try {
         const existingCategory = await collection.findOne({
-          name: name.toLowerCase(),
+          name: name,
         });
         if (existingCategory)
           return response
@@ -39,10 +39,10 @@ async function categoryRoutes(fastify, options) {
             .send({ message: "Category already exists" });
 
         await collection.insertOne({
-          name: name.toLowerCase(),
+          name: name,
           description,
           createdAt: new Date(),
-          createdBy: email,
+          createdBy: { userId, userName, userEmail },
         });
 
         response.status(200).send({ message: "Category created successfully" });
