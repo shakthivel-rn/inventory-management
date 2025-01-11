@@ -1,9 +1,16 @@
 const fastify = require("fastify")();
+const cors = require("@fastify/cors");
 const authPlugin = require("./plugins/auth");
 const generateTokenPlugin = require("./plugins/generateToken");
 require("dotenv").config();
 
 const JWT_SECRET = process.env.JWT_SECRET;
+
+fastify.register(cors, {
+  origin: "http://127.0.0.1:5500",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true,
+});
 
 fastify.register(require("@fastify/mongodb"), {
   forceClose: true,

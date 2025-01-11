@@ -1,0 +1,48 @@
+* {
+    font-family: "Rubik", serif;
+}
+
+html {
+    background-color: #2F2D2E;
+    color: white;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+}
+
+#title {
+    text-align: center;
+    color: #048BA8;
+}
+
+#signup-form {
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+input {
+    padding: 10px;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+}
+
+button {
+    padding: 5px;
+    border: none;
+    background-color: #048BA8;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#error-message {
+    text-align: center;
+    padding: 20px;
+}
