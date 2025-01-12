@@ -8,7 +8,6 @@ document
 
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
-    console.log(email);
     const password = document.getElementById("password").value;
 
     if (!name) {
@@ -30,7 +29,7 @@ document
       const response = await signup({ name, email, password });
 
       if (response.ok) {
-        alert("Signup successfull");
+        alert("Sign Up Successful");
       } else {
         const errorData = await response.json();
         showError(errorData.message || "Signup Failed");
